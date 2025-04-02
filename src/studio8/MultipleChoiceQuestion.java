@@ -11,11 +11,13 @@ public class MultipleChoiceQuestion extends Question {
 	 * @param points
 	 * @param choices
 	 */
+	private String[] choices;
 	public MultipleChoiceQuestion(String prompt, String answer, int points, String[] choices) {
 		// Call the super class constructor, then create and set
 		// instance variables for any values that aren't handled
 		// by the base class
-		throw new NotYetImplementedException();
+		super(prompt,answer,points);
+		this.choices = choices;
 	}
 	
 	/**
@@ -23,7 +25,10 @@ public class MultipleChoiceQuestion extends Question {
 	 * the choices present for the question.
 	 */
 	public void displayPrompt() {
-		throw new NotYetImplementedException();
+		super.displayPrompt();
+		for(int i = 0; i<choices.length; i++) {
+			System.out.println((i+1) + "." + choices[i]);
+		}
 	}
 	
 	/**
@@ -31,11 +36,23 @@ public class MultipleChoiceQuestion extends Question {
 	 * @return String[] of choices
 	 */
 	public String[] getChoices() {
-		throw new NotYetImplementedException();
+		return this.choices;
 	}
 	
 	public static void main(String[] args) {
-		// TODO: create your own MultipleChoiceQuestion
+		String[] options = {"Green", "Purple", "Blue", "Red"};
+		MultipleChoiceQuestion multcq = new MultipleChoiceQuestion("What color is the sky?", "Blue", 20, options);
+		
+		multcq.displayPrompt();
+		
+		System.out.println("Answer: " + multcq.getAnswer());
+		System.out.println("Points: " + multcq.getPoints());
+		String[] choices = multcq.getChoices();
+		System.out.println("Choices: ");
+		for(String c : choices) {
+			System.out.print(c + " ");
+		}
+		System.out.println("Check Answer: 'Blue " + multcq.checkAnswer("Blue"));
 	}
 
 }

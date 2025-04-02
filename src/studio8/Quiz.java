@@ -10,8 +10,10 @@ public class Quiz {
 	 * Constructor
 	 * @param questions
 	 */
+	private Question[] questions;
+	
 	public Quiz(Question[] questions) {
-		throw new NotYetImplementedException();
+		this.questions = questions;
 	}
 	
 	/**
@@ -30,7 +32,11 @@ public class Quiz {
 	 * @return int number of total points
 	 */
 	public int getTotalPoints() {
-		throw new NotYetImplementedException();
+		int total = 0;
+		for(Question q : questions) {
+			total += q.getPoints();
+		}
+		return total;
 	}
 	
 	/**
